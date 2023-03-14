@@ -1,11 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = 'https://www.fuzu.com/kenya'
-html = requests.get(url)
+url = 'https://www.fuzu.com/kenya/job/nairobi'
+html = requests.get(url).text
 
-soup = BeautifulSoup(html.text, 'lxml')
-jobs = soup.find_all('a', class_="Card__StyledDiv-sc-uckied-0 kUaCWW b2c-card clickable")
+soup = BeautifulSoup(html, 'lxml')
+jobs = soup.find_all('a', class_="Card__StyledDiv-sc-uckied-0 logKwD b2c-card clickable")
 
 for job in jobs:
     company_name = job.find('p', class_="Text__StyledText-sc-152w2ki-0 MDWeZ b2c-text").text
